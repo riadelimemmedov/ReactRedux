@@ -1,0 +1,60 @@
+//!React
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+
+//!Custom Components
+import Posts from './components/Post.jsx'
+import PostForm from './components/PostForm.jsx'
+
+//!Css
+import './App.css'
+
+
+//!MaterialUI React
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+
+import { Provider } from 'react-redux'
+
+import store from './store.js'
+
+//*App Component
+function App() {
+  const [count, setCount] = useState(0) 
+
+  return (
+    <Provider store={store}>
+          <Box sx={{ flexGrow: 1 }} width={'100%'}>
+            <AppBar position="static">
+              <Toolbar>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit" 
+                  aria-label="menu"
+                  sx={{ mr: 2 }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  News
+                </Typography>
+                <Button color="inherit">Login</Button>
+              </Toolbar>
+            </AppBar>
+          </Box>
+          {/* Imported Components */}
+          <PostForm/>
+          <hr/>
+          <Posts/>
+    </Provider>
+  )
+}
+
+export default App
